@@ -66,6 +66,7 @@ void find(Users* peoples, short size);
 bool isalpha_r(unsigned char a);
 void find(Users* peoples, short size);
 bool save(Users* peoples, short* size);
+bool chek_file();
 
 COORD getCursorPosition(void);
 void Clear(int x, int y, long cnt = 100);

@@ -7,7 +7,7 @@ int main()
 	Users* peoples = nullptr;
 	const char* NAMES[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
 	const char* SURNAMES[] = { "Ivanov","Petrov","Sidorov","Smirnov","Kuznetsov","Ivanova","Petrova","Sidorova","Smirnova","Kuznetsova" };
-	if (initForFile(peoples, &size) == 0)
+	if (chek_file()==1)
 	{
 		size = rand() % 10 + 1;
 		peoples = create(size);

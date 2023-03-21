@@ -1,3 +1,3 @@
-Ivan Ivanov 1973
-Olga Petrova 1927
-Natalia Sidorova 2023
+Ivan Ivanov 1973 488245517115 man
+Olga Petrova 1927 423221685761 women
+Natalia Sidorova 2023 954312334113 women

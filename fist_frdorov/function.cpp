@@ -2,6 +2,20 @@
 
 #include "Header.h"
 
+bool chek_file() {
+	ifstream in;
+	int i = 0;
+	in.open("Users.txt", ios::in);
+
+	if (in.eof())
+	{
+		in.close();
+		return 0;
+	}
+	else 
+		in.close();
+		return 1;
+}
 bool isalpha_r(unsigned char a)
 {
 	bool rez = ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') || a == '-');
@@ -39,7 +53,10 @@ Users* initForFile(Users* people, short* size)
 		*size = -1;	// if error *size = -1;
 		return people;
 	}
-	if (in.peek() == std::ifstream::traits_type::eof()) {
+	
+	if (in.eof())
+		return 0;
+
 		while (!in.eof())
 		{
 			people = resize(people, size, (*size) + 1);
@@ -49,10 +66,8 @@ Users* initForFile(Users* people, short* size)
 
 		in.close();
 		return people;
-	}
-	else {
-		return 0;
-	}
+	
+	
 }
 void error()
 {
@@ -554,7 +569,7 @@ bool save(Users* peoples, short* size)
 
 	for (int i = 0; i < *size; i++)
 	{
-		out << peoples[i].Name << " " << peoples[i].Surname << " " << peoples[i].Year;
+		out << peoples[i].Name << " " << peoples[i].Surname << " " << peoples[i].Year << " " << peoples[i].piesel << " " << peoples[i].sex;
 		if (i < *size - 1) out << endl;
 	}
 
