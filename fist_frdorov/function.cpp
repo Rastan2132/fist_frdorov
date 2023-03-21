@@ -5,8 +5,7 @@
 bool isalpha_r(unsigned char a)
 {
 	bool rez = ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') || a == '-');
-	rez |= (a >= (unsigned char)'а' && a <= (unsigned char)'я') || (a >= (unsigned char)'А' && a <= (unsigned char)'Я');
-	rez |= (strchr("ёЁіІїЇєЄ`", a) > 0);
+	
 	return rez;
 }
 void show(Users* people, short size)
@@ -315,7 +314,7 @@ Users* sort(Users* peoples, short size)
 {
 
 	char v;
-	cout << endl << "Wybiesz:\n1 - posortowac za Name\n2 - posortowac za Year\n3 - posortowac za Surname\n - posortowac za pesel\n3 - posortowac za Sex\nQ - Wyjść\n"; v = _getch();
+	cout << endl << "Wybiesz:\n1 - posortowac za Name\n2 - posortowac za Year\n3 - posortowac za Surname\n4 - posortowac za pesel\n5  - posortowac za Sex\nQ - Wyjść\n"; v = _getch();
 	cout << endl;
 	switch (v)
 	{
@@ -480,7 +479,7 @@ void find(Users* peoples, short size)
 			}
 		}
 
-	} while (true); //Пока не нажата клавиша Escape.
+	} while (true); //Пока не нажата Esc.
 
 	delete[] keyword; keyword = nullptr;
 }
