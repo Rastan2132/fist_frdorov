@@ -2,7 +2,13 @@
 
 #include "Header.h"
 
-
+bool isalpha_r(unsigned char a)
+{
+	bool rez = ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') || a == '-');
+	rez |= (a >= (unsigned char)'а' && a <= (unsigned char)'я') || (a >= (unsigned char)'А' && a <= (unsigned char)'Я');
+	rez |= (strchr("ёЁіІїЇєЄ`", a) > 0);
+	return rez;
+}
 void show(Users* people, short size)
 {
 	system("cls");
@@ -442,7 +448,7 @@ void find(Users* peoples, short size)
 			} while (i != len || len == 0);
 		}
 
-		/* Выводим результаты. */
+		// Выводим результаты. 
 
 		setCursorPosition(hat.X, hat.Y);
 
