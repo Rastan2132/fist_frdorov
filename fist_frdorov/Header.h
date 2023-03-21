@@ -65,6 +65,8 @@ char* strstr_lower(char* str_a, char* str_b);
 void find(Users* peoples, short size);
 bool isalpha_r(unsigned char a);
 void find(Users* peoples, short size);
+bool save(Users* peoples, short* size);
+
 COORD getCursorPosition(void);
 void Clear(int x, int y, long cnt = 100);
 void print_find(char* str, short str_size, char* keyword, short key_size, int text = -1, int back = -1);

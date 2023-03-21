@@ -39,24 +39,24 @@ Users* initForFile(Users* people, short* size)
 		*size = -1;	// if error *size = -1;
 		return people;
 	}
-	if (in.peek() == ifstream::traits_type::eof())
-	{
-		*size = 0;    // файл пуст
-		in.close();
-		return nullptr;
-	}
-	while (!in.eof())
-	{
-		people = resize(people, size, (*size) + 1);
-		i = *size - 1;
-		in >> people[i].Name >> people[i].Surname >> people[i].Year >> people[i].piesel >> people[i].sex;
-	}
+	if (in.peek() == std::ifstream::traits_type::eof()) {
+		while (!in.eof())
+		{
+			people = resize(people, size, (*size) + 1);
+			i = *size - 1;
+			in >> people[i].Name >> people[i].Surname >> people[i].Year >> people[i].piesel >> people[i].sex;
+		}
 
-	in.close();
-	return people;
+		in.close();
+		return people;
+	}
+	else {
+		return 0;
+	}
 }
 void error()
 {
+	Beep(800, 150);
 	cout << "ERROR!" << endl << endl;
 	system("pause");
 }
@@ -79,10 +79,11 @@ Users* resize(Users* people, short* size, short size_n, short num)
 }
 int rand_data(char sex[])								/// от 0 до 9 муж. от 10 до 19 жен
 {
-	if (sex == "men")
+	char* _sex = new char[4] { 'm', 'a', 'n', '\0' };
+	if (sex[1] == _sex[1])
 		return rand() % 5;
 	else
-		return rand() % 5 + 4;
+		return rand() % 5 + 5;
 
 }
 char* rand_data(int max)
@@ -189,8 +190,8 @@ Users* del(Users* peoples, short* size)
 	bool work = 1;
 	system("cls");
 
-	cout << "Are you sure that you want to delete last user?" << endl;
-	cout << "Press (y) if you sure, press (n) if you are not" << endl;
+	cout << "Czy na pewno chcesz usunąć ostatniego użytkownika?" << endl;
+	cout << "Naciśnij (y), jeśli jesteś pewien, naciśnij (n), jeśli nie" << endl;
 
 	do {
 		switch (_getch()) {
@@ -244,7 +245,7 @@ Users* edit(Users* peoples, short size, short index, bool menu)
 		system("cls");
 		cout << "Uzytkownik #" << index + 1 << endl << endl;
 		cout << "Enter name: ";
-		stredit(peoples[index].Name, MAXLINE, 20, 2);
+		stredit(peoples[index].Name, MAXLINE, 13, 2);
 
 	} while (strlen(peoples[index].Name) == 0);
 
@@ -252,24 +253,24 @@ Users* edit(Users* peoples, short size, short index, bool menu)
 	{
 		system("cls");
 		cout << "Uzytkownik #" << index + 1 << endl << endl;
-		cout << "Enter Year: ";
-		stredit(peoples[index].Year, MAXLINE, 20, 2);
-	} while (strlen(peoples[index].Year) == 0);
-
-	do
-	{
-		system("cls");
-		cout << "Uzytkownik #" << index + 1 << endl << endl;
 		cout << "Enter Surname: ";
-		stredit(peoples[index].Surname, MAXLINE, 20, 2);
+		stredit(peoples[index].Surname, MAXLINE, 16, 2);
 
 	} while (strlen(peoples[index].Surname) == 0);
 	do
 	{
 		system("cls");
 		cout << "Uzytkownik #" << index + 1 << endl << endl;
+		cout << "Enter Year: ";
+		stredit(peoples[index].Year, MAXLINE, 13, 2);
+	} while (strlen(peoples[index].Year) == 0);
+
+	do
+	{
+		system("cls");
+		cout << "Uzytkownik #" << index + 1 << endl << endl;
 		cout << "Enter Pesel: ";
-		stredit(peoples[index].piesel, MAXLINE, 20, 2);
+		stredit(peoples[index].piesel, MAXLINE, 16, 2);
 
 	} while (strlen(peoples[index].piesel) == 0);
 	do
@@ -277,7 +278,7 @@ Users* edit(Users* peoples, short size, short index, bool menu)
 		system("cls");
 		cout << "Uzytkownik #" << index + 1 << endl << endl;
 		cout << "Enter sex: ";
-		stredit(peoples[index].sex, MAXLINE, 20, 2);
+		stredit(peoples[index].sex, MAXLINE, 12, 2);
 
 	} while (strlen(peoples[index].sex) == 0);
 
@@ -470,8 +471,8 @@ void find(Users* peoples, short size)
 				print_find(peoples[i].Name, MAXLINE, keyword, MAXLINE, Red);
 				print_find(peoples[i].Surname, MAXLINE, keyword, MAXLINE, Red);
 				print_find(peoples[i].Year, MAXLINE, keyword, MAXLINE, Red);
-				print_find(peoples[i].sex, MAXLINE, keyword, MAXLINE, Red);
 				print_find(peoples[i].piesel, MAXLINE, keyword, MAXLINE, Red);
+				print_find(peoples[i].sex, MAXLINE, keyword, MAXLINE, Red);
 
 				cout << endl;
 			}
@@ -541,4 +542,22 @@ void print_find(char* str, short str_size, char* keyword, short key_size, int te
 
 	setCursorPosition(cursor.X, cursor.Y);
 	showcursor(true);
+}
+
+bool save(Users* peoples, short* size)
+{
+	ofstream out;
+
+	out.open("Users.txt", ios::out);
+	if (!out.is_open())
+		return false;
+
+	for (int i = 0; i < *size; i++)
+	{
+		out << peoples[i].Name << " " << peoples[i].Surname << " " << peoples[i].Year;
+		if (i < *size - 1) out << endl;
+	}
+
+	out.close();
+	return true;
 }

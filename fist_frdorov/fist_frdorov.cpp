@@ -5,9 +5,9 @@ int main()
 	bool work = 1;
 	short size = 0;
 	Users* peoples = nullptr;
-	const char* NAMES[] = { "John", "Jane", "Jack", "Mary", "Bob", "Alice", "Tom", "Sara", "Peter", "Kate" };
-	const char* SURNAMES[] = { "Petrov", "Smith", "Johnson", "Brown", "Linkoln", "Wilson", "Taylor", "Anderson", "Clark", "Wright" };
-	if (initForFile(peoples, &size) == nullptr)
+	const char* NAMES[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
+	const char* SURNAMES[] = { "Ivanov","Petrov","Sidorov","Smirnov","Kuznetsov","Ivanova","Petrova","Sidorova","Smirnova","Kuznetsova" };
+	if (initForFile(peoples, &size) == 0)
 	{
 		size = rand() % 10 + 1;
 		peoples = create(size);
@@ -31,7 +31,7 @@ int main()
 			work = false;
 			break;
 		case (97):
-			cout << "Chcesz dodać sam czy losowo" << endl;
+			cout << "Chcesz dodać sam czy losowo (S lub R)" << endl;
 			switch (_getch())
 			{
 			case (115):
@@ -57,8 +57,8 @@ int main()
 			break;
 		}
 	} while (work);
-//	if (!(work = save(pb, &size)))	// save
-//		error();
+	if (!(work = save(peoples, &size)))	
+	error();
 
 	delete[] peoples;
 
