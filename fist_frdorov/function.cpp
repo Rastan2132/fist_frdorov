@@ -1,13 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include "Header.h"
-bool isalpha_r(unsigned char a)
-{
-	bool rez = ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') || a == '-');
-	rez |= (a >= (unsigned char)'а' && a <= (unsigned char)'я') || (a >= (unsigned char)'А' && a <= (unsigned char)'Я');
-	rez |= (strchr("ёЁіІїЇєЄ`", a) > 0);
-	return rez;
-}
+
+
 void show(Users* people, short size)
 {
 	system("cls");
@@ -404,6 +399,7 @@ Users* sort(Users* peoples, short size)
 }
 
 
+
 void find(Users* peoples, short size)
 {
 	if (peoples == nullptr || size == 0)
@@ -463,12 +459,16 @@ void find(Users* peoples, short size)
 		{
 			if (strstr_lower(peoples[i].Name, keyword)
 				|| strstr_lower(peoples[i].Surname, keyword)
+				|| strstr_lower(peoples[i].sex, keyword)
+				|| strstr_lower(peoples[i].piesel, keyword)
 				|| strstr_lower(peoples[i].Year, keyword))
 			{
 				cout << left << setw(3) << i + 1 << "  ";
 				print_find(peoples[i].Name, MAXLINE, keyword, MAXLINE, Red);
 				print_find(peoples[i].Surname, MAXLINE, keyword, MAXLINE, Red);
 				print_find(peoples[i].Year, MAXLINE, keyword, MAXLINE, Red);
+				print_find(peoples[i].sex, MAXLINE, keyword, MAXLINE, Red);
+				print_find(peoples[i].piesel, MAXLINE, keyword, MAXLINE, Red);
 
 				cout << endl;
 			}

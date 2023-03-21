@@ -57,7 +57,7 @@ int main()
 			break;
 		}
 	} while (work);
-//	if (!(work = save(peoples, &size)))	// save
+//	if (!(work = save(pb, &size)))	// save
 //		error();
 
 	delete[] peoples;
