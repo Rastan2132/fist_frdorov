@@ -4,17 +4,16 @@
 
 bool chek_file() {
 	ifstream in;
-	int i = 0;
 	in.open("Users.txt", ios::in);
 
-	if (in.eof())
+	auto rez = 1;
+	if (in.is_open())
 	{
+		if (in.peek() == char_traits<char>::eof())
+			rez = 0;
 		in.close();
-		return 0;
-	}
-	else 
-		in.close();
-		return 1;
+	};
+		return rez;
 }
 bool isalpha_r(unsigned char a)
 {
