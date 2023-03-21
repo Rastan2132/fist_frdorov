@@ -390,8 +390,6 @@ Users* sort(Users* peoples, short size)
 		break;
 	case 'q':
 	case 'Q':
-	case 'й':
-	case 'Й':
 		break;
 	default:
 	{
