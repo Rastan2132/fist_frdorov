@@ -16,7 +16,11 @@ int main()
 	}
 	else
 		peoples = initForFile(peoples, &size);
-
+	////////////////////////////////////////////////////////
+	int rows = rand() % 10 + 1;
+	int cols = rand() % 10 + 1;
+	Uzond** Uzonds = create(rows, cols);
+	////////////////////////////////////////////////////////
 	if (size < 0)
 	{
 		error();
@@ -60,6 +64,12 @@ int main()
 	if (!(work = save(peoples, &size)))	
 	error();
 
+	/// ///////////////
+
+	for (int i = 0; i < rows; i++) {
+		delete[] Uzonds[i];
+	}
+	delete[] Uzonds;
 	delete[] peoples;
 
 	return !(work);

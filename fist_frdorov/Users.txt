@@ -1,0 +1,14 @@
+Ivan Ivanov 1973 488245517115 man
+Olga Petrova 1927 423221685761 women
+Natalia Sidorova 2023 954312334113 women
+Olga Kuznetsova 1950 779319865028 women
+Anna Sidorova 1944 865090061389 women
+Ivan Kuznetsov 1932 66184963788 man
+Natalia Petrova 2021 598407636154 women
+Anna Kuznetsova 2017 372601657541 women
+Anna Ivanova 1977 460717777335 women
+Ivan Smirnov 1941 826603801250 man
+Ivan Sidorov 1996 351201640618 man
+Sergei Kuznetsov 1997 439880877838 man
+Dmitry Petrov 1950 734965109968 man
+Ivan Smirnov 1916 992553337438 man

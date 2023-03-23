@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="fist_frdorov.cpp" />
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="function_2X.cpp" />
     <ClCompile Include="Grafiks.cpp" />
   </ItemGroup>
   <ItemGroup>

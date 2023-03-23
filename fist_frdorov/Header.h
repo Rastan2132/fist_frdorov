@@ -32,6 +32,11 @@ struct Users
 	char piesel[MAXLINE] = "";
 	char sex[MAXLINE] = "";
 };
+struct Uzond
+{
+	char Name[MAXLINE] = "";
+	char Numer[MAXLINE] = "";
+};
 struct COLOR
 {
 	short text;
@@ -45,6 +50,11 @@ enum ConsoleColor
 
 enum Keys { Enter = 13, Backspace = 8 };
 enum SpecialKeys { Left = 75, Right = 77, End = 79, Home = 71, Esc = 27, Del = 83 };
+
+
+
+Uzond** create(int rows, int cols);
+
 
 void error();
 Users* create(short size);
@@ -67,6 +77,8 @@ bool isalpha_r(unsigned char a);
 void find(Users* peoples, short size);
 bool save(Users* peoples, short* size);
 bool chek_file();
+
+
 
 COORD getCursorPosition(void);
 void Clear(int x, int y, long cnt = 100);
