@@ -16,6 +16,7 @@
 
 #define MENU "| q-Zamkac |  a-ADD uzytkownika  |  d-Usuwanie uzytkownika |  e-Redaktor |  s-Sortowac |  y-Szukaj |" 
 #define stru "#   Name                 Surname	       Year		   Piesel 	       Sex"
+#define stru_2 "    Name                 Num         Name                 Num         Name                 Num"
 
 #define MAXLINE 20
 
@@ -58,6 +59,7 @@ enum SpecialKeys { Left = 75, Right = 77, End = 79, Home = 71, Esc = 27, Del = 8
 Uzond** create(int rows, int cols);
 void show(Uzond** Uzonds, short rows, short cols);
 bool save(Uzond** Uzonds, short rows, short cols);
+Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_2, bool menu = 1);
 
 Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]);
 
@@ -72,7 +74,7 @@ Users* initRand(Users* peoples, const char* NAMES[], const char* SURNAMES[], sho
 Users* add(Users* peoples, short* size);
 bool record(char* p, unsigned short min, const char* prompt, bool chkAlpha, bool chkDigit, bool chkFirst);
 bool isdigit_r(unsigned char a);
-Users* edit(Users* peoples, short size, short index, bool menu);
+Users* edit(Users* peoples, short size, short index, bool menu=1);
 Users* del(Users* peoples, short* size);
 int select(Users* peoples, short size);
 Users* sort(Users* peoples, short size);

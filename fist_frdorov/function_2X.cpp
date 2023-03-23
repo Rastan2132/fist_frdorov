@@ -16,6 +16,8 @@ void show(Uzond** Uzonds, short rows, short cols)
     cout << "----------------------------------------------------------------------------------------------------\n";
     cout << "				    ---=== UZOND BOOK ===---            your Uzond: " << rows<< "*" << cols << endl;
     cout << "----------------------------------------------------------------------------------------------------\n";
+    cout << stru_2 << endl;
+    cout << "----------------------------------------------------------------------------------------------------\n";
     for (short i = 0; i < rows; i++)
     {
         cout << right << setw(3) << setfill('0') << i + 1 << setfill(' ') << " ";
@@ -58,4 +60,36 @@ Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]){
             strcpy(Uzonds[i][j].Name, NAMES[rand() % 4]);
         }
     return Uzonds;
+}
+
+
+Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_2, bool menu)
+{
+	system("cls");
+
+	if (index_1 < 0 || index_2 >= cols|| index_1 >= rows|| index_2 < 0)
+	{
+		error();
+		return Uzonds;
+	}
+	do
+	{
+		system("cls");
+		cout << "Urzond #" << index_1 << "*"<< index_2 << endl << endl;
+		cout << "Enter name: ";
+		stredit(Uzonds[index_1][index_2].Name, MAXLINE, 12, 2);
+
+	} while (strlen(Uzonds[index_1][index_2].Name) == 0);
+	do
+	{
+        system("cls");
+        cout << "Urzond #" << index_1 << "*" << index_2 << endl << endl;
+        cout << "Enter numer: ";
+        stredit(Uzonds[index_1][index_2].Numer, MAXLINE, 12, 2);
+
+	} while (strlen(Uzonds[index_1][index_2].Numer) == 0);
+
+	if (menu) cout << "Edited!" << endl;
+
+	return Uzonds;
 }

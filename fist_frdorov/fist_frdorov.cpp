@@ -71,6 +71,8 @@ int main()
 	Uzonds = nullptr;
 	short rows = 0;
 	short cols = 0;
+	short index_1 = 0;
+	short index_2 = 0;
 
 	if (chek_file("Users.txt") == 0)
 	{
@@ -113,7 +115,9 @@ int main()
 			//Uzonds = del(Uzonds, &rows, &cols);
 			break;
 		case (101):
-			//Uzonds = edit(Uzonds, rows, cols, select(peoples, size), true);
+			cout << "Enter rows and cols: ";
+			cin >> index_1 >> index_2;
+			Uzonds = edit(Uzonds,  rows,  cols,  index_1-1,  index_2-1, true);
 			break;
 		case (115):
 		//	sort(Uzonds, rows, cols);
