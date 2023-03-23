@@ -134,10 +134,22 @@ char* rand_data(int max)
 
 		return arr;
 	}
+	else if (max == 3)
+	{
+		long long number = 0;
+		for (int i = 0; i < 3; i++) {
+			number = number * 10 + rand() % 10;
+		}
+
+		arr = new char[4];
+		snprintf(arr, 4, "%lld", number);
+
+		return arr;
+	}
 	return nullptr;
 }
 
-Users* initRandUsers(Users* peoples, const char* NAMES[], const char* SURNAMES[], short i)
+Users* initRand(Users* peoples, const char* NAMES[], const char* SURNAMES[], short i)
 {
 	strcpy_s(peoples[i].sex, rand_data(sex_));
 	strcpy_s(peoples[i].Name, NAMES[rand_data(peoples[i].sex)]);

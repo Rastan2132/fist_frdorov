@@ -12,13 +12,14 @@
 
 
 #define MANIP setw(MAXLINE) <<  left 
+#define MANIP_2 setw(10) <<  left 
 
 #define MENU "| q-Zamkac |  a-ADD uzytkownika  |  d-Usuwanie uzytkownika |  e-Redaktor |  s-Sortowac |  y-Szukaj |" 
 #define stru "#   Name                 Surname	       Year		   Piesel 	       Sex"
-#define stru_2 "#   Name			Number"
 
 #define MAXLINE 20
 
+#define num_ 3
 #define sex_ 2
 #define year_ 4
 #define piesel_ 12
@@ -58,6 +59,8 @@ Uzond** create(int rows, int cols);
 void show(Uzond** Uzonds, short rows, short cols);
 bool save(Uzond** Uzonds, short rows, short cols);
 
+Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]);
+
 void error();
 Users* create(short size);
 void show(Users* people, short size);
@@ -65,7 +68,7 @@ Users* initForFile(Users* people, short* size);
 Users* resize(Users* people, short* size, short size_n, short num = 0);
 int rand_data(char sex[]);
 char* rand_data(int max);
-Users* initRandUsers(Users* peoples, const char* NAMES[], const char* SURNAMES[], short i = 0);
+Users* initRand(Users* peoples, const char* NAMES[], const char* SURNAMES[], short i = 0);
 Users* add(Users* peoples, short* size);
 bool record(char* p, unsigned short min, const char* prompt, bool chkAlpha, bool chkDigit, bool chkFirst);
 bool isdigit_r(unsigned char a);

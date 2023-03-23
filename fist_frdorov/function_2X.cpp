@@ -16,16 +16,17 @@ void show(Uzond** Uzonds, short rows, short cols)
     cout << "----------------------------------------------------------------------------------------------------\n";
     cout << "				    ---=== UZOND BOOK ===---            your Uzond: " << rows << endl;
     cout << "----------------------------------------------------------------------------------------------------\n";
-    cout << stru_2 << endl;
-    cout << "----------------------------------------------------------------------------------------------------\n";
     for (short i = 0; i < rows; i++)
     {
         cout << right << setw(3) << setfill('0') << i + 1 << setfill(' ') << " ";
         for (short j = 0; j < cols; j++)
         {
-            cout << MANIP << Uzonds[i][j].Name << " " << MANIP << Uzonds[i][j].Numer << "  ";
+            if (!(j % 4)) {
+                cout << endl; cout << MANIP_2<<" ";
+            }
+            cout << MANIP_2 << Uzonds[i][j].Name << " " << MANIP_2 << Uzonds[i][j].Numer << "  ";
         }
-        cout << endl;
+        cout << endl<<endl;
     }
 }
 bool save(Uzond** Uzonds, short rows, short cols)
@@ -47,4 +48,14 @@ bool save(Uzond** Uzonds, short rows, short cols)
 
     out.close();
     return true;
+}
+
+Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]){
+    for(int i=0;i < rows;i++)
+        for (int j = 0; j < cols; j++)
+        {
+            strcpy(Uzonds[i][j].Numer, rand_data(num_));
+            strcpy(Uzonds[i][j].Name, NAMES[rand() % 10]);
+        }
+    return Uzonds;
 }

@@ -7,12 +7,13 @@ int main()
 	Users* peoples = nullptr;
 	const char* NAMES[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
 	const char* SURNAMES[] = { "Ivanov","Petrov","Sidorov","Smirnov","Kuznetsov","Ivanova","Petrova","Sidorova","Smirnova","Kuznetsova" };
+	const char* NAMES_of_Uzond[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
 	if (chek_file("Users.txt")==0)
 	{
 		size = rand() % 10 + 1;
 		peoples = create(size);
 		for(int i =0;i<size;i++)
-			peoples = initRandUsers(peoples, NAMES, SURNAMES,i);
+			peoples = initRand(peoples, NAMES, SURNAMES,i);
 	}
 	else
 		peoples = initForFile(peoples, &size);
@@ -41,7 +42,7 @@ int main()
 				break;
 			case (114):
 				peoples = resize(peoples, &size, size+ 1);
-				peoples = initRandUsers(peoples, NAMES, SURNAMES, size-1);
+				peoples = initRand(peoples, NAMES, SURNAMES, size-1);
 				break;
 			}
 			break;
@@ -65,14 +66,23 @@ int main()
 
 	delete[] peoples;
 	////////////////////////////////////////////////////////
-	Uzond** Uzonds = nullptr;
-	//if (chek_file("Users.txt") == 0)
-	//{
-	int rows = rand() % 10 + 1;
-	int cols = rand() % 10 + 1;
+	Uzond** Uzonds = create(1, 1);;
+
+	Uzonds = nullptr;
+	short rows = 0;
+	short cols = 0;
+
+	if (chek_file("Users.txt") == 0)
+	{
+	rows = rand() % 10 + 1;
+	cols = rand() % 10 + 1;
 	Uzonds = create(rows, cols);
-	//}
-	//else
+	Uzonds = initRand(Uzonds, rows, cols, NAMES_of_Uzond);
+	}
+	else
+	{
+		Uzonds = initRand(Uzonds, rows, cols, NAMES_of_Uzond);
+	}
 	////////////////////////////////////////////////////////
 	do
 	{
@@ -88,29 +98,29 @@ int main()
 			switch (_getch())
 			{
 			case (115):
-				peoples = add(peoples, &size);
+				//Uzonds = add(Uzonds, &rows, &cols);
 				break;
 			case (114):
-				peoples = resize(peoples, &size, size + 1);
-				peoples = initRandUsers(peoples, NAMES, SURNAMES, size - 1);
+			//	Uzonds = resize(Uzonds, &rows, &cols, cols+1);
+			//	Uzonds = initRand(Uzonds, NAMES, SURNAMES, size - 1);
 				break;
 			}
 			break;
 		case (100):
-			peoples = del(peoples, &size);
+			//Uzonds = del(Uzonds, &rows, &cols);
 			break;
 		case (101):
-			peoples = edit(peoples, size, select(peoples, size), true);
+			//Uzonds = edit(Uzonds, rows, cols, select(peoples, size), true);
 			break;
 		case (115):
-			sort(peoples, size);
+		//	sort(Uzonds, rows, cols);
 			break;
 		case (121):
-			find(peoples, size);
+			//find(Uzonds, rows, cols);
 			break;
 		}
 	} while (work);
-	if (!(work = save(peoples, &size)))
+	if (!(work = save(Uzonds, rows, cols)))
 		error();
 	/// ///////////////
 
@@ -119,9 +129,9 @@ int main()
 	}
 	delete[] Uzonds;
 
+
 	return !(work);
 }
-
 
 // треба написати текстовий інтерфейс юзера иниціализіровать 2 структури та					+
 // стровити меню виділення памьяти при тому функция мусить генерувати розмір массиву		+
