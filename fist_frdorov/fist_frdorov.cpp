@@ -99,21 +99,10 @@ int main()
 			work = false;
 			break;
 		case (97):
-			cout << "Chcesz dodać sam czy losowo (S lub R)" << endl;
-			switch (_getch())
-			{
-			case (115):
-				cout << "Enter rows and cols: ";
-				cin >> index_1 >> index_2;
-				Uzonds = add(Uzonds, &rows, &cols, index_1 - 1, index_2 - 1);
-				break;
-			case (114):
-			//	Uzonds = initRand(Uzonds, NAMES, SURNAMES, size - 1);
-				break;
-			}
+			Uzonds = initRand(Uzonds, &cols, rows, cols, NAMES_of_Uzond, 1);
 			break;
 		case (100):
-			//Uzonds = del(Uzonds, &rows, &cols);
+			Uzonds = del(Uzonds, rows, cols);
 			break;
 		case (101):
 			cout << "Enter rows and cols: ";

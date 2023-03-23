@@ -61,6 +61,31 @@ Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]){
         }
     return Uzonds;
 }
+Uzond** initRand(Uzond** Uzonds, short* cols, short rows_, short cols_, const char* NAMES[], bool flag) {
+	Uzond** Uzonds_n = new Uzond * [rows_];
+	for (int i = 0; i < rows_; i++) {
+		Uzonds_n[i] = new Uzond[cols_ + 1];
+	}
+	for (short l = 0; l < rows_; l++)
+	{
+		for (short i = 0; i < cols_; i++)
+		{
+			strcpy_s(Uzonds_n[l][i].Name, Uzonds[l][i].Name);
+			strcpy_s(Uzonds_n[l][i].Numer, Uzonds[l][i].Numer);
+		}
+	}
+	*cols = cols_ + 1;
+	for (int i = 0; i < rows_; i++) {
+		delete[] Uzonds[i];
+	}
+	delete[] Uzonds;
+	for (int i = 0; i < rows_; i++) {
+		strcpy_s(Uzonds_n[i][cols_].Numer, rand_data(num_));
+		strcpy_s(Uzonds_n[i][cols_].Name, NAMES[rand() % 4]);
+	}
+	return Uzonds_n;
+}
+
 
 
 Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_2, bool menu)
@@ -224,8 +249,8 @@ Uzond** resize(Uzond** Uzonds, short* rows, short rows_n, short* cols, short col
 	for (int i = 0; i < rows_n; i++) {
 		Uzonds_n[i] = new Uzond[cols_n];
 	}
-	for (short l = 0; l < *rows; l++)
-		for (short i = 0; i < *cols; i++)
+	for (short l = 0; l < rows_n; l++)
+		for (short i = 0; i < cols_n; i++)
 			if (i != num - 1)
 				{
 				strcpy_s(Uzonds_n[l][i].Name, Uzonds[l][i].Name);
@@ -236,6 +261,33 @@ Uzond** resize(Uzond** Uzonds, short* rows, short rows_n, short* cols, short col
 	delete[] Uzonds;
 	return Uzonds_n;
 }
+Uzond** del(Uzond** Uzonds, short rows, short& cols)
+{
+	Uzond** Uzonds_n = new Uzond * [rows];
+	for (int i = 0; i < rows; i++) {
+		Uzonds_n[i] = new Uzond[cols - 1];
+	}
+	cout << "podaj numer kolumny do usunięcia: ";
+	int s = 0;
+	cin >> s;
+	for (int i = 0; i < rows; i++) {
+		int newColIndex = 0;
+		for (int j = 0; j < cols; j++) {
+			if (j != s) {
+				Uzonds_n[i][newColIndex] = Uzonds[i][j];
+				newColIndex++;
+			}
+		}
+	}
+	for (int i = 0; i < rows; i++) {
+		delete[] Uzonds[i];
+	}
+	delete[] Uzonds;
+	cols--;
+	return Uzonds_n;
+}
+
+/*
 Uzond** add(Uzond** Uzonds, short *rows, short *cols, short index_1, short index_2)
 {
 	if (index_1 < 0 || index_2 < 0)
@@ -243,10 +295,18 @@ Uzond** add(Uzond** Uzonds, short *rows, short *cols, short index_1, short index
 		error();
 		return Uzonds;
 	}
+	if(*rows > index_1)
+		Uzonds = resize(Uzonds, rows, *rows, cols, index_2);
+	if (*rows < index_1||*cols < index_2)
 		Uzonds = resize(Uzonds, rows, index_1, cols, index_2);
+	if (*cols > index_2)
+	Uzonds = resize(Uzonds, rows, index_1, cols, *cols);
+
+	Uzonds = resize(Uzonds, rows, index_1, cols, index_2);
 	record(Uzonds[index_1][index_2].Name, 2, " Name: ", false, false, false);
 	cout << endl;
 	record(Uzonds[index_1][index_2].Numer, 1, " Numer: ", false, 1, false);
 	cout << endl;
 	return Uzonds;
 }
+*/

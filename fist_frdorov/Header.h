@@ -63,9 +63,11 @@ Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_
 Uzond** sort(Uzond** Uzonds, short rows, short cols);
 void find(Uzond** Uzonds, short rows, short cols);
 Uzond** resize(Uzond** Uzonds, short* rows, short rows_n, short* cols, short cols_n, short num = 0);
-Uzond** add(Uzond** Uzonds, short* rows, short* cols, short index_1, short index_2);
-
+Uzond** initRand(Uzond** Uzonds, short* cols, short rows_, short cols_, const char* NAMES[], bool flag);
 Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]);
+Uzond** del(Uzond** Uzonds, short rows, short& cols);
+//Uzond** add(Uzond** Uzonds, short* rows, short* cols, short index_1, short index_2);
+
 
 void error();
 Users* create(short size);

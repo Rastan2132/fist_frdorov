@@ -195,7 +195,7 @@ bool record(char* p, unsigned short min, const char* prompt, bool chkAlpha, bool
 		p[MAXLINE - 1] = '\0';
 		n = strlen(p);
 		for (i = 0; i < n; i++)
-			if (chkAlpha || (chkDigit && !isdigit_r(p[i])))	//  isdigit((unsigned char)p[i])
+			if (chkAlpha || (chkDigit && !isdigit_r(p[i])))	
 				break;
 		if (i != n || n < min || (chkFirst && isdigit_r(p[0])))
 		{

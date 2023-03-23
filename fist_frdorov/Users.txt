@@ -18,3 +18,4 @@ Elena Smirnova 2020 681989722828 women
 Anna Ivanova 1977 460717777335 women
 Natalia Petrova 2021 598407636154 women
 Natalia Sidorova 2023 954312334113 women
+Dmitry Kuznetsov 1988 948824551711 man
