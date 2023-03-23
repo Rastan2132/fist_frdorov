@@ -120,7 +120,7 @@ int main()
 			Uzonds = edit(Uzonds,  rows,  cols,  index_1-1,  index_2-1, true);
 			break;
 		case (115):
-		//	sort(Uzonds, rows, cols);
+			sort(Uzonds, rows, cols);
 			break;
 		case (121):
 			//find(Uzonds, rows, cols);

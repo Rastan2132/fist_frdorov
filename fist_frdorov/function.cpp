@@ -339,10 +339,9 @@ int select(Users* peoples, short size)
 Users* sort(Users* peoples, short size)
 {
 
-	char v;
-	cout << endl << "Wybiesz:\n1 - posortowac za Name\n2 - posortowac za Year\n3 - posortowac za Surname\n4 - posortowac za pesel\n5  - posortowac za Sex\nQ - Wyjść\n"; v = _getch();
+	cout << endl << "Wybiesz:\n1 - posortowac za Name\n2 - posortowac za Year\n3 - posortowac za Surname\n4 - posortowac za pesel\n5  - posortowac za Sex\nQ - Wyjść\n"; 
 	cout << endl;
-	switch (v)
+	switch (_getch())
 	{
 	case '1':
 		for (short i = 0; i < size; i++) {
@@ -419,7 +418,7 @@ Users* sort(Users* peoples, short size)
 		break;
 	default:
 	{
-		cout << endl << "Paush 1, 2, 3 or Q " << endl;
+		cout << endl << "Paush 1, 2, 3, 4, 5 or Q " << endl;
 		system("pause");
 	}
 	}

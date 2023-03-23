@@ -1,4 +1,4 @@
-#include "Header.h"
+﻿#include "Header.h"
 
 Uzond** create(int rows, int cols) {
 	Uzond** Uzonds = new Uzond * [rows];
@@ -85,11 +85,57 @@ Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_
         system("cls");
         cout << "Urzond #" << index_1 << "*" << index_2 << endl << endl;
         cout << "Enter numer: ";
-        stredit(Uzonds[index_1][index_2].Numer, MAXLINE, 12, 2);
+        stredit(Uzonds[index_1][index_2].Numer, MAXLINE, 13, 2);
 
 	} while (strlen(Uzonds[index_1][index_2].Numer) == 0);
 
 	if (menu) cout << "Edited!" << endl;
 
 	return Uzonds;
+}
+
+Uzond** sort(Uzond** Uzonds, short rows, short cols)
+{
+	cout << endl << "Wybiesz:\n1 - posortowac za Name\n2 - posortowac za Numb\nQ - Wyjść\n";
+	cout << endl;
+	switch (_getch())
+	{
+	case '1':
+		for (short l = 0; l < rows; l++)
+		for (short i = 0; i < cols; i++) {
+			for (short j = i + 1; j < cols; j++) {
+				if (strcmp(Uzonds[l][i].Name, Uzonds[l][j].Name) > 0) {
+					swap(Uzonds[l][i].Name, Uzonds[l][j].Name);
+					swap(Uzonds[l][i].Numer, Uzonds[l][j].Numer);
+				}
+			}
+		}
+		cout << endl << "Sorted" << endl;
+		system("pause");
+		break;
+	case '2':
+
+		for (short l = 0; l < rows; l++)
+		for (short i = 0; i < cols; i++) {
+			for (short j = i + 1; j < cols; j++) {
+				if (strcmp(Uzonds[l][i].Numer, Uzonds[l][j].Numer) > 0) {
+					swap(Uzonds[l][i].Name, Uzonds[l][j].Name);
+					swap(Uzonds[l][i].Numer, Uzonds[l][j].Numer);
+				}
+			}
+		}
+		cout << endl << "Sorted" << endl;
+		system("pause");
+		break;
+	case 'q':
+	case 'Q':
+		break;
+	default:
+	{
+		cout << endl << "Paush 1, 2 or Q " << endl;
+		system("pause");
+	}
+	}
+	return Uzonds;
+
 }
