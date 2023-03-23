@@ -7,7 +7,7 @@ int main()
 	Users* peoples = nullptr;
 	const char* NAMES[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
 	const char* SURNAMES[] = { "Ivanov","Petrov","Sidorov","Smirnov","Kuznetsov","Ivanova","Petrova","Sidorova","Smirnova","Kuznetsova" };
-	if (chek_file()==0)
+	if (chek_file("Users.txt")==0)
 	{
 		size = rand() % 10 + 1;
 		peoples = create(size);
@@ -16,10 +16,15 @@ int main()
 	}
 	else
 		peoples = initForFile(peoples, &size);
-	////////////////////////////////////////////////////////
-	int rows = rand() % 10 + 1;
-	int cols = rand() % 10 + 1;
-	Uzond** Uzonds = create(rows, cols);
+	///////////////////////////////////////////////////////
+	Uzond** Uzonds = nullptr;
+	//if (chek_file("Users.txt") == 0)
+	//{
+		int rows = rand() % 10 + 1;
+		int cols = rand() % 10 + 1;
+		Uzonds = create(rows, cols);
+	//}
+	//else
 	////////////////////////////////////////////////////////
 	if (size < 0)
 	{
@@ -29,6 +34,7 @@ int main()
 	do
 	{
 		show(peoples, size);
+
 		switch (_getch())
 		{
 		case (113):
@@ -63,7 +69,44 @@ int main()
 	} while (work);
 	if (!(work = save(peoples, &size)))	
 	error();
+	do
+	{
+		show(Uzonds, rows, cols);
 
+		switch (_getch())
+		{
+		case (113):
+			work = false;
+			break;
+		case (97):
+			cout << "Chcesz dodać sam czy losowo (S lub R)" << endl;
+			switch (_getch())
+			{
+			case (115):
+				peoples = add(peoples, &size);
+				break;
+			case (114):
+				peoples = resize(peoples, &size, size + 1);
+				peoples = initRandUsers(peoples, NAMES, SURNAMES, size - 1);
+				break;
+			}
+			break;
+		case (100):
+			peoples = del(peoples, &size);
+			break;
+		case (101):
+			peoples = edit(peoples, size, select(peoples, size), true);
+			break;
+		case (115):
+			sort(peoples, size);
+			break;
+		case (121):
+			find(peoples, size);
+			break;
+		}
+	} while (work);
+	if (!(work = save(peoples, &size)))
+		error();
 	/// ///////////////
 
 	for (int i = 0; i < rows; i++) {
@@ -94,4 +137,4 @@ int main()
 //12 innit
 // сорт
 // зміна стану об
-// пошук
+// пошук 

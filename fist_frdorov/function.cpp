@@ -2,9 +2,9 @@
 
 #include "Header.h"
 
-bool chek_file() {
+bool chek_file(string file) {
 	ifstream in;
-	in.open("Users.txt", ios::in);
+	in.open(file, ios::in);
 
 	auto rez = 1;
 	if (in.is_open())
@@ -202,7 +202,6 @@ Users* del(Users* peoples, short* size)
 {
 
 	bool work = 1;
-	system("cls");
 
 	cout << "Czy na pewno chcesz usunąć ostatniego użytkownika?" << endl;
 	cout << "Naciśnij (y), jeśli jesteś pewien, naciśnij (n), jeśli nie" << endl;

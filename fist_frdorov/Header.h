@@ -54,7 +54,7 @@ enum SpecialKeys { Left = 75, Right = 77, End = 79, Home = 71, Esc = 27, Del = 8
 
 
 Uzond** create(int rows, int cols);
-
+void show(Uzond** people, short rows, short cols);
 
 void error();
 Users* create(short size);
@@ -76,7 +76,7 @@ void find(Users* peoples, short size);
 bool isalpha_r(unsigned char a);
 void find(Users* peoples, short size);
 bool save(Users* peoples, short* size);
-bool chek_file();
+bool chek_file(string file);
 
 
 
