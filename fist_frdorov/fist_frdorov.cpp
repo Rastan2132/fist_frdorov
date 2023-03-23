@@ -7,7 +7,7 @@ int main()
 	Users* peoples = nullptr;
 	const char* NAMES[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
 	const char* SURNAMES[] = { "Ivanov","Petrov","Sidorov","Smirnov","Kuznetsov","Ivanova","Petrova","Sidorova","Smirnova","Kuznetsova" };
-	const char* NAMES_of_Uzond[] = { "Alexander","Maxim","Dmitry","Sergei","Ivan","Anna","Maria","Olga","Elena","Natalia" };
+	const char* NAMES_of_Uzond[] = { "Urzad Pracy","Urzad Spraw","Urzad Skarbowy","Urzad s. cywilnego" };
 	if (chek_file("Users.txt")==0)
 	{
 		size = rand() % 10 + 1;
@@ -81,6 +81,9 @@ int main()
 	}
 	else
 	{
+		rows = rand() % 10 + 1;
+		cols = rand() % 10 + 1;
+		Uzonds = create(rows, cols);
 		Uzonds = initRand(Uzonds, rows, cols, NAMES_of_Uzond);
 	}
 	////////////////////////////////////////////////////////

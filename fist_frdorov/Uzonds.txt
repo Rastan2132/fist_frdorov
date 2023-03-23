@@ -1,2 +1,2 @@
-Ivan 409  Ivan 882  Olga 551  Dmitry 115  Ivan 761  Dmitry 232  Anna 168  Elena 761  
-Natalia 927  Maxim 543  Ivan 233  Elena 113  Olga 742  Maxim 793  Anna 986  Maria 28  
+Urzad Pracy 409  Urzad Pracy 882  Urzad s. cywilnego 551  Urzad Skarbowy 115  Urzad Pracy 761  Urzad Skarbowy 232  Urzad s. cywilnego 168  Urzad Skarbowy 761  
+Urzad s. cywilnego 927  Urzad s. cywilnego 543  Urzad Pracy 233  Urzad Pracy 113  Urzad Spraw 742  Urzad Spraw 793  Urzad s. cywilnego 986  Urzad Skarbowy 28  
