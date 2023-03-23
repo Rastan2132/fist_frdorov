@@ -14,7 +14,8 @@
 #define MANIP setw(MAXLINE) <<  left 
 
 #define MENU "| q-Zamkac |  a-ADD uzytkownika  |  d-Usuwanie uzytkownika |  e-Redaktor |  s-Sortowac |  y-Szukaj |" 
-#define stru "%   Name                 Surname	       Year		   Piesel 	       Sex"
+#define stru "#   Name                 Surname	       Year		   Piesel 	       Sex"
+#define stru_2 "#   Name			Number"
 
 #define MAXLINE 20
 
