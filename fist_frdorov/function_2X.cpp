@@ -32,7 +32,7 @@ bool save(Uzond** Uzonds, short rows, short cols)
 {
     ofstream out;
 
-    out.open("Users.txt", ios::out);
+    out.open("Uzonds.txt", ios::out);
     if (!out.is_open())
         return false;
 
