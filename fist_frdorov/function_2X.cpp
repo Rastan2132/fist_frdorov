@@ -16,7 +16,7 @@ void show(Uzond** Uzonds, short rows, short cols)
     cout << "----------------------------------------------------------------------------------------------------\n";
     cout << "				    ---=== UZOND BOOK ===---            your Uzond: " << rows<< "*" << cols << endl;
     cout << "----------------------------------------------------------------------------------------------------\n";
-    cout << stru_2 << endl;
+    cout << "    " << stru_2 << stru_2 << stru_2 << endl;
     cout << "----------------------------------------------------------------------------------------------------\n";
     for (short i = 0; i < rows; i++)
     {
@@ -138,4 +138,83 @@ Uzond** sort(Uzond** Uzonds, short rows, short cols)
 	}
 	return Uzonds;
 
+}
+
+void find(Uzond** Uzonds, short rows, short cols)
+{
+	if (Uzonds == nullptr || rows == 0||cols == 0)
+	{
+		error();
+		return;
+	}
+
+	char* keyword = new char[MAXLINE]; keyword[0] = '\0';
+
+	COORD enter, hat;
+
+	system("cls");
+	cout << " Esc - Wejscie" << endl << endl;
+	cout << "Szukaj: ";
+	enter = getCursorPosition();
+
+	cout << endl <<" #   " stru_2 << endl;
+	hat = getCursorPosition();
+
+	COORD temp_pos;
+	short len = 0;
+
+	do
+	{
+		//Вводим ключевое слово для поиска.
+		{
+			int i = 0;
+			do
+			{
+
+				if (!stredit(keyword, MAXLINE, enter.X, enter.Y, len, false)) return;
+				len = (short)strlen(keyword);
+
+				for (i = 0; i < len; i++)
+				{
+					if (!(isdigit_r(keyword[i]) || isalpha_r(keyword[i]))) break;
+				}
+
+			} while (i != len || len == 0);
+		}
+
+		// Выводим результаты. 
+
+		setCursorPosition(hat.X, hat.Y);
+
+		//Очищаем предыдущие результаты поиска.
+		for (int i = 0; i < cols; i++)
+		{
+			temp_pos = getCursorPosition();
+			Clear(temp_pos.X, temp_pos.Y + i);
+		}
+		setCursorPosition(hat.X, hat.Y);
+
+		//Выводим новые результаты поиска
+		for (short l = 0; l < rows; l++)
+		{
+			cout << "Rezultat o " << l + 1 << " linii" << endl;
+			for (short i = 0; i < cols; i++)
+			{
+				if (strstr_lower(Uzonds[l][i].Name, keyword)
+					|| strstr_lower(Uzonds[l][i].Numer, keyword))
+				{
+					cout << left << setw(3) << i + 1 << "  ";
+					print_find(Uzonds[l][i].Name, MAXLINE, keyword, MAXLINE, Red);
+					print_find(Uzonds[l][i].Numer, MAXLINE, keyword, MAXLINE, Red);
+
+					cout << endl;
+
+				}
+			}
+			cout << endl;
+
+	}
+	} while (true); //Пока не нажата Esc.
+
+	delete[] keyword; keyword = nullptr;
 }

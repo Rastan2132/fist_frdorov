@@ -16,7 +16,7 @@
 
 #define MENU "| q-Zamkac |  a-ADD uzytkownika  |  d-Usuwanie uzytkownika |  e-Redaktor |  s-Sortowac |  y-Szukaj |" 
 #define stru "#   Name                 Surname	       Year		   Piesel 	       Sex"
-#define stru_2 "    Name                 Num         Name                 Num         Name                 Num"
+#define stru_2 "Name                 Num         "
 
 #define MAXLINE 20
 
@@ -61,6 +61,7 @@ void show(Uzond** Uzonds, short rows, short cols);
 bool save(Uzond** Uzonds, short rows, short cols);
 Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_2, bool menu = 1);
 Uzond** sort(Uzond** Uzonds, short rows, short cols);
+void find(Uzond** Uzonds, short rows, short cols);
 
 Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]);
 

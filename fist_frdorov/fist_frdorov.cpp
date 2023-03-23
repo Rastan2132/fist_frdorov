@@ -123,7 +123,7 @@ int main()
 			sort(Uzonds, rows, cols);
 			break;
 		case (121):
-			//find(Uzonds, rows, cols);
+			find(Uzonds, rows, cols);
 			break;
 		}
 	} while (work);
