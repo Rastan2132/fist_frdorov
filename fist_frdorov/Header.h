@@ -62,6 +62,8 @@ bool save(Uzond** Uzonds, short rows, short cols);
 Uzond** edit(Uzond** Uzonds, short rows, short cols, short index_1, short index_2, bool menu = 1);
 Uzond** sort(Uzond** Uzonds, short rows, short cols);
 void find(Uzond** Uzonds, short rows, short cols);
+Uzond** resize(Uzond** Uzonds, short* rows, short rows_n, short* cols, short cols_n, short num = 0);
+Uzond** add(Uzond** Uzonds, short* rows, short* cols, short index_1, short index_2);
 
 Uzond** initRand(Uzond** Uzonds, short rows, short cols, const char* NAMES[]);
 

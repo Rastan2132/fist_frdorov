@@ -103,10 +103,11 @@ int main()
 			switch (_getch())
 			{
 			case (115):
-				//Uzonds = add(Uzonds, &rows, &cols);
+				cout << "Enter rows and cols: ";
+				cin >> index_1 >> index_2;
+				Uzonds = add(Uzonds, &rows, &cols, index_1 - 1, index_2 - 1);
 				break;
 			case (114):
-			//	Uzonds = resize(Uzonds, &rows, &cols, cols+1);
 			//	Uzonds = initRand(Uzonds, NAMES, SURNAMES, size - 1);
 				break;
 			}

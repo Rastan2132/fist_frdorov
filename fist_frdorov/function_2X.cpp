@@ -218,3 +218,35 @@ void find(Uzond** Uzonds, short rows, short cols)
 
 	delete[] keyword; keyword = nullptr;
 }
+Uzond** resize(Uzond** Uzonds, short* rows, short rows_n, short* cols, short cols_n, short num)
+{
+	Uzond** Uzonds_n = new Uzond * [rows_n];
+	for (int i = 0; i < rows_n; i++) {
+		Uzonds_n[i] = new Uzond[cols_n];
+	}
+	for (short l = 0; l < *rows; l++)
+		for (short i = 0; i < *cols; i++)
+			if (i != num - 1)
+				{
+				strcpy_s(Uzonds_n[l][i].Name, Uzonds[l][i].Name);
+				strcpy_s(Uzonds_n[l][i].Numer, Uzonds[l][i].Numer);
+				}
+	*rows = rows_n;
+	*cols = cols_n;
+	delete[] Uzonds;
+	return Uzonds_n;
+}
+Uzond** add(Uzond** Uzonds, short *rows, short *cols, short index_1, short index_2)
+{
+	if (index_1 < 0 || index_2 < 0)
+	{
+		error();
+		return Uzonds;
+	}
+		Uzonds = resize(Uzonds, rows, index_1, cols, index_2);
+	record(Uzonds[index_1][index_2].Name, 2, " Name: ", false, false, false);
+	cout << endl;
+	record(Uzonds[index_1][index_2].Numer, 1, " Numer: ", false, 1, false);
+	cout << endl;
+	return Uzonds;
+}
