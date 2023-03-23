@@ -55,7 +55,8 @@ enum SpecialKeys { Left = 75, Right = 77, End = 79, Home = 71, Esc = 27, Del = 8
 
 
 Uzond** create(int rows, int cols);
-void show(Uzond** people, short rows, short cols);
+void show(Uzond** Uzonds, short rows, short cols);
+bool save(Uzond** Uzonds, short rows, short cols);
 
 void error();
 Users* create(short size);

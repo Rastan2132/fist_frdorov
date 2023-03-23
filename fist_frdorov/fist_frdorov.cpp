@@ -17,15 +17,7 @@ int main()
 	else
 		peoples = initForFile(peoples, &size);
 	///////////////////////////////////////////////////////
-	Uzond** Uzonds = nullptr;
-	//if (chek_file("Users.txt") == 0)
-	//{
-		int rows = rand() % 10 + 1;
-		int cols = rand() % 10 + 1;
-		Uzonds = create(rows, cols);
-	//}
-	//else
-	////////////////////////////////////////////////////////
+	
 	if (size < 0)
 	{
 		error();
@@ -69,6 +61,19 @@ int main()
 	} while (work);
 	if (!(work = save(peoples, &size)))	
 	error();
+
+
+	delete[] peoples;
+	////////////////////////////////////////////////////////
+	Uzond** Uzonds = nullptr;
+	//if (chek_file("Users.txt") == 0)
+	//{
+	int rows = rand() % 10 + 1;
+	int cols = rand() % 10 + 1;
+	Uzonds = create(rows, cols);
+	//}
+	//else
+	////////////////////////////////////////////////////////
 	do
 	{
 		show(Uzonds, rows, cols);
@@ -113,7 +118,6 @@ int main()
 		delete[] Uzonds[i];
 	}
 	delete[] Uzonds;
-	delete[] peoples;
 
 	return !(work);
 }
