@@ -226,8 +226,7 @@ Users* del(Users* peoples, short* size)
 			if (*size > 0)
 			{
 				peoples = resize(peoples, size, *size - 1, *size);
-				cout << "User was successfully deleted" << endl;
-				cout << "press to continue" << endl;
+				cout << "User zostal usunenty" << endl;
 				system("pause");
 
 				return peoples;
